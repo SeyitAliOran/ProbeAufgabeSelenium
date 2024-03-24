@@ -6,7 +6,6 @@ import com.sauce.pages.LoginPage;
 import com.sauce.pages.ProductsPage;
 import com.sauce.utilities.ConfigurationReader;
 import com.sauce.utilities.Driver;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,53 +18,53 @@ public class EndToEnd_StepDef {
     CartPage cartPage = new CartPage();
     CheckoutPage checkoutPage = new CheckoutPage();
 
-    @Given("The user is on the login page")
-    public void the_user_is_on_the_login_page() {
+    @Given("Der Benutzer befindet sich auf der Anmeldeseite")
+    public void der_benutzer_befindet_sich_auf_der_anmeldeseite()  {
         Driver.get().get(ConfigurationReader.get("url"));
     }
-    @When("The user enters {string} and {string}")
-    public void theUserEntersAnd(String username, String password) {
+    @When("Der Benutzer {string} und {string} eingibt")
+    public void der_benutzer_und_eingibt(String username, String password) {
         loginPage.login(username, password);
     }
 
-    @Then("The user should be able to see {string} header")
-    public void theUserShouldBeAbleToSeeHeader(String expectedHeader) {
+    @Then("Der Benutzer sollte  in der Lage sein, die Kopfzeile {string} zu sehen")
+    public void der_benutzer_sollte_in_der_lage_sein_die_kopfzeile_zu_sehen(String expectedHeader) {
         assertEquals(expectedHeader,productsPage.productsText.getText());
     }
 
-    @And("The user adds the as {string} and {string} product")
-    public void the_user_adds_the_as_and_product(String product1, String product2) {
+    @Then("Der Benutzer fügt die Produkte {string} und {string} hinzu")
+    public void der_benutzer_fügt_die_produkte_und_hinzu(String product1, String product2) {
         productsPage.addProduct(product1);
         productsPage.addProduct(product2);
     }
 
-    @And("The user opens basket")
-    public void theUserOpensBasket() {
+    @Then("Der Benutzer öffnet den Warenkorb")
+    public void der_benutzer_öffnet_den_warenkorb() {
         productsPage.cartBtn.click();
     }
 
-    @And("The user clicks on checkout")
-    public void theUserClicksOnCheckout() {
+    @Then("Der Benutzer klickt auf \"Zur Kasse gehen")
+    public void der_benutzer_klickt_auf_zur_kasse_gehen() {
         cartPage.checkoutBtn.click();
     }
 
-    @And("The user enters details as {string} and {string} and {string}")
-    public void theUserEntersDetailsAsAndAnd(String firstname, String lastname, String zipCode) {
+    @Then("Der Benutzer gibt die Daten {string} und {string} und {string} ein")
+    public void der_benutzer_gibt_die_daten_und_und_ein(String firstname, String lastname, String zipCode) {
         checkoutPage.enterDetails(firstname, lastname, zipCode);
     }
 
-    @Then("The user verifies that the price is {string}")
-    public void theUserVerifiesThatThePriceIs(String expectedTotal) {
+    @Then("Der Benutzer überprüft, dass der Preis {string} ist")
+    public void der_benutzer_überprüft_dass_der_preis_ist(String expectedTotal) {
         assertEquals(expectedTotal,checkoutPage.summaryTotal.getText());
     }
 
-    @And("The user clicks on finish button")
-    public void theUserClicksOnFinishButton() {
+    @Then("Der Benutzer klickt auf die Schaltfläche \"Finish")
+    public void der_benutzer_klickt_auf_die_schaltfläche_finish() {
         checkoutPage.finishBtn.click();
     }
 
-    @Then("The user should be able to see confirmation message as {string}")
-    public void theUserShouldBeAbleToSeeConfirmationMessageAs(String expectedMessage) {
+    @Then("Der Benutzer sollte in der Lage sein, eine Bestätigungsnachricht wie {string} zu sehen.")
+    public void der_benutzer_sollte_in_der_lage_sein_eine_bestätigungsnachricht_wie_zu_sehen(String expectedMessage) {
         assertEquals(expectedMessage,checkoutPage.thanksMsg.getText());
     }
 }
