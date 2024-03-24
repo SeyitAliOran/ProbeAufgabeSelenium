@@ -1,4 +1,4 @@
-<h1 align="left">SauceDemo Task - Playwright  Framework</h1>
+<h1 align="left">SauceDemo Task - Selenium Framework With Cucumber</h1>
 
 ###
 
