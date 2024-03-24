@@ -6,6 +6,7 @@ import com.sauce.pages.LoginPage;
 import com.sauce.pages.ProductsPage;
 import com.sauce.utilities.ConfigurationReader;
 import com.sauce.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -32,23 +33,23 @@ public class EndToEnd_StepDef {
         assertEquals(expectedHeader,productsPage.productsText.getText());
     }
 
-    @Then("Der Benutzer fügt die Produkte {string} und {string} hinzu")
+    @And("Der Benutzer fügt die Produkte {string} und {string} hinzu")
     public void der_benutzer_fügt_die_produkte_und_hinzu(String product1, String product2) {
         productsPage.addProduct(product1);
         productsPage.addProduct(product2);
     }
 
-    @Then("Der Benutzer öffnet den Warenkorb")
+    @And("Der Benutzer öffnet den Warenkorb")
     public void der_benutzer_öffnet_den_warenkorb() {
         productsPage.cartBtn.click();
     }
 
-    @Then("Der Benutzer klickt auf \"Zur Kasse gehen")
+    @And("Der Benutzer klickt auf Zur Kasse gehen")
     public void der_benutzer_klickt_auf_zur_kasse_gehen() {
         cartPage.checkoutBtn.click();
     }
 
-    @Then("Der Benutzer gibt die Daten {string} und {string} und {string} ein")
+    @And("Der Benutzer gibt die Daten {string} und {string} und {string} ein")
     public void der_benutzer_gibt_die_daten_und_und_ein(String firstname, String lastname, String zipCode) {
         checkoutPage.enterDetails(firstname, lastname, zipCode);
     }
@@ -58,7 +59,7 @@ public class EndToEnd_StepDef {
         assertEquals(expectedTotal,checkoutPage.summaryTotal.getText());
     }
 
-    @Then("Der Benutzer klickt auf die Schaltfläche \"Finish")
+    @And("Der Benutzer klickt auf die Schaltfläche Finish")
     public void der_benutzer_klickt_auf_die_schaltfläche_finish() {
         checkoutPage.finishBtn.click();
     }
